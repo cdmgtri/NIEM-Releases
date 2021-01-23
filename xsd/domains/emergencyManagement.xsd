@@ -6,16 +6,17 @@
   xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
   xmlns:edxl_rm="http://release.niem.gov/niem/codes/edxl_rm/5.0/"
   xmlns:edxl-cap="http://release.niem.gov/niem/adapters/edxl-cap/5.0/"
-  xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/5.0/"
+  xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/5.1/"
+  xmlns:fema="http://release.niem.gov/niem/codes/fema/5.1/"
   xmlns:fips="http://release.niem.gov/niem/codes/fips/5.0/"
   xmlns:have-codes="http://release.niem.gov/niem/codes/edxl_have/5.0/"
   xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/5.0/"
-  xmlns:it="http://release.niem.gov/niem/domains/internationalTrade/5.0/"
-  xmlns:j="http://release.niem.gov/niem/domains/jxdm/7.0/"
+  xmlns:it="http://release.niem.gov/niem/domains/internationalTrade/5.1/"
+  xmlns:j="http://release.niem.gov/niem/domains/jxdm/7.1/"
   xmlns:mo="http://release.niem.gov/niem/domains/militaryOperations/5.0/"
   xmlns:nc="http://release.niem.gov/niem/niem-core/5.0/"
   xmlns:niem-xs="http://release.niem.gov/niem/proxy/niem-xs/5.0/"
-  xmlns:scr="http://release.niem.gov/niem/domains/screening/5.0/"
+  xmlns:scr="http://release.niem.gov/niem/domains/screening/5.1/"
   xmlns:structures="http://release.niem.gov/niem/structures/5.0/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -64,16 +65,17 @@
   <xs:import namespace="http://release.niem.gov/niem/codes/apco/5.0/" schemaLocation="../codes/apco.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/codes/edxl_have/5.0/" schemaLocation="../codes/have-codes.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/codes/edxl_rm/5.0/" schemaLocation="../codes/edxl_rm.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/codes/fema/5.1/" schemaLocation="../codes/fema.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/codes/fips/5.0/" schemaLocation="../codes/fips.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/codes/iso_639-3/5.0/" schemaLocation="../codes/iso_639-3.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/domains/biometrics/5.0/" schemaLocation="biom.xsd"/>
-  <xs:import namespace="http://release.niem.gov/niem/domains/internationalTrade/5.0/" schemaLocation="internationalTrade.xsd"/>
-  <xs:import namespace="http://release.niem.gov/niem/domains/jxdm/7.0/" schemaLocation="jxdm.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/domains/internationalTrade/5.1/" schemaLocation="internationalTrade.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/domains/jxdm/7.1/" schemaLocation="jxdm.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/domains/militaryOperations/5.0/" schemaLocation="mo.xsd"/>
-  <xs:import namespace="http://release.niem.gov/niem/domains/screening/5.0/" schemaLocation="screening.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/domains/screening/5.1/" schemaLocation="screening.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/niem-core/5.0/" schemaLocation="../niem-core.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/proxy/niem-xs/5.0/" schemaLocation="../adapters/niem-xs.xsd"/>
   <xs:import namespace="http://release.niem.gov/niem/structures/5.0/" schemaLocation="../utility/structures.xsd"/>
-  <xs:import namespace="http://release.niem.gov/niem/codes/fips/5.0/" schemaLocation="../codes/fips.xsd"/>
   <xs:complexType name="AccessType">
     <xs:annotation>
       <xs:documentation>A data type for a credential class that describes the access rights</xs:documentation>
@@ -14078,9 +14080,9 @@
       <xs:documentation>An augmentation point for PreliminaryDamageAssessmentType</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="PrimaryResidenceIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingPrimaryResidenceIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if this home is occupied at least 6 months per year and is this a primary residence; false if dwelling occupied as a vacation residence? Or simply vacant.</xs:documentation>
+      <xs:documentation>True if this home is occupied at least 6 months per year and is this a primary residence; false if dwelling occupied as a vacation residence or simply vacant.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="PrintedText" type="nc:TextType" nillable="true">
@@ -15119,233 +15121,154 @@
     </xs:annotation>
   </xs:element>
   <!-- New Addition for NIEM 5.1 -->
-  <xs:element name="AgricultureStructureIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingAgricultureStructureIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if a building is reported as being an agricultural structure in the policy application ; false if otherwise</xs:documentation>
+      <xs:documentation>True if a building is reported as being an agricultural structure; false otherwise.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="ElevatedBuildingIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingElevatedBuildingIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if a building meets the NFIP definition of an elevated building. An elevated building is a no-basement building that was constructed so as to meet the following criteria: 1. The top of the elevated floor (all A zones) or the bottom of the lowest horizontal structural member of the lowest floor (all V zones) is above ground level. 2. The building is adequately anchored. 3. The method of elevation is pilings, columns (posts and piers), shear walls (not in V zones), or solid foundation perimeter walls (not in V zones) ; false if otherwise</xs:documentation>
+      <xs:documentation>True if a building meets the NFIP definition of an elevated building; false otherwise. An elevated building is a no-basement building that was constructed so as to meet the following criteria: 1. The top of the elevated floor (all A zones) or the bottom of the lowest horizontal structural member of the lowest floor (all V zones) is above ground level. 2. The building is adequately anchored. 3. The method of elevation is pilings, columns (posts and piers), shear walls (not in V zones), or solid foundation perimeter walls (not in V zones)</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="HouseWorshipIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingHouseWorshipIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if a building is reported as being a house of worship in the policy application; false if otherwise</xs:documentation>
+      <xs:documentation>True if a building is reported as being a house of worship; false otherwise.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="NonProfitIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingNonProfitIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if a building is reported as being a non-profit in the policy application; false if otherwise</xs:documentation>
+      <xs:documentation>True if a building is reported as being a non-profit; false otherwise.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="PostFIRMConstructionIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingPostFIRMConstructionIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if construction was started before or after publication of the FIRM. For insurance rating purposes, buildings for which the start of construction or substantial improvement was after December 31, 1974, or on or after the effective date of the initial FIRM for the community, whichever is later, are considered Post-FIRM construction ; false if otherwise</xs:documentation>
+      <xs:documentation>True if construction was started after publication of the FIRM; false if construction was started before publication. For insurance rating purposes, buildings for which the start of construction or substantial improvement was after December 31, 1974, or on or after the effective date of the initial FIRM for the community, whichever is later, are considered Post-FIRM construction.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="SmallBusinessIndicatorBuildingIndicator" type="niem-xs:boolean" nillable="true">
+  <xs:element name="BuildingSmallBusinessIndicator" type="niem-xs:boolean" nillable="true">
     <xs:annotation>
-      <xs:documentation>True if the insured represents a small business. Small business is defined as a business with fewer than 100 employees in the policy application ; false if otherwise</xs:documentation>
+      <xs:documentation>True if the insured represents a small business; false otherwise. Small business is defined as a business with fewer than 100 employees.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="DateOfLossDateTime" type="niem-xs:dateTime" nillable="true">
+  <xs:element name="BuildingDateOfLossDate" type="nc:DateType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for the date on which water first entered the insured building. When time is not specified in the field, it will default to T00:00:00.000Z</xs:documentation>
+      <xs:documentation>A date on which water first entered the insured building.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="OriginalConstructionDateTime" type="niem-xs:dateTime" nillable="true">
+  <xs:element name="BuildingOriginalConstructionDate" type="nc:DateType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for the original date of the construction of the building. When time is not specified in the field, it will default to T00:00:00.000Z</xs:documentation>
+      <xs:documentation>An original date of the construction of the building.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="OriginalNBDateTime" type="niem-xs:dateTime" nillable="true">
+  <xs:element name="BuildingOriginalFloodPolicyDate" type="nc:DateType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for The original date of the flood policy. When time is not specified in the field, it will default to T00:00:00.000Z</xs:documentation>
+      <xs:documentation>An original date of the flood policy.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="BaseFloodElevation" type="niem-xs:integer" nillable="true">
+  <xs:element name="BuildingBaseFloodElevation" type="niem-xs:integer" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Base Flood Elevation (BFE) is the elevation at which there is a 1% chance per year of flooding in feet from the elevation certificate</xs:documentation>
+      <xs:documentation>A Base Flood Elevation (BFE) is the elevation at which there is a 1% chance per year of flooding in feet from the elevation certificate</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="BasementEnclosureCrawlspaceTypeOption" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingBasementStructureCategoryCode" type="fema:BuildingBasementStructureCategoryCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Basement is defined for purposes of the NFIP as any level or story which has its floor subgrade on all sides. Basement structure values are as follows: 
-0 - none; 
-1 - Finished Basement/Enclosure; 
-2 - Unfinished Basement/Enclosure; 
-3 - Crawlspace; 
-4 - Subgrade Crawlspace;</xs:documentation>
+      <xs:documentation>A kind of basement structure, defined as any level or story which has its floor subgrade on all sides.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="PolicyCount" type="niem-xs:integer" nillable="true">
+  <xs:element name="BuildingPolicyCountQuantity" type="niem-xs:integer" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Insured units in an active status. A policy contract ceases to be in an active status as of the cancellation date or the expiration date. Residential Condominium Building Association Policy (RCBAP) contracts are stored as a single policy contract but insure multiple units and therefore represent multiple policies</xs:documentation>
+      <xs:documentation>A number of insured units in an active status. A policy contract ceases to be in an active status as of the cancellation date or the expiration date. Residential Condominium Building Association Policy (RCBAP) contracts are stored as a single policy contract but insure multiple units and therefore represent multiple policies</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="CommunityRatingSystemDiscount" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingCommunityRatingSystemDiscountCode" type="fema:BuildingCommunityRatingSystemDiscountCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for The Community Rating System (CRS) Classification Credit Percentage used to rate the policy. The insurance premium credit is based on whether a property is in or out of the Special Flood Hazard Area (SFHA) as shown on the community's Flood Insurance Rate Map. The premium credit for properties in the SFHA increases according to a community's CRS class: 
-1 - SFHA 45% ** Non SFHA 10% **; 
-2 - SFHA 40% ** Non SFHA 10% **; 
-3 - SFHA 35% ** Non SFHA 10% **; 
-4 - SFHA 30% ** Non SFHA 10% **; 
-5 - SFHA 25% ** Non SFHA 10% **; 
-6 - SFHA 20% ** Non SFHA10% **; 
-7 - SFHA 15% ** Non SFHA 5% **; 
-8 - SFHA 10% ** Non SFHA 5% **; 
-9 - SFHA 5% Non SFHA 5%; 
-10 - SFHA 0% Non SFHA 0%; 
-*For the purpose of determining CRS Premium Discounts, all AR and A99 zones are treated as non-SFHAs. **These percentages are subject to change. Always refer to the Flood Insurance Manual for the latest information
-      </xs:documentation>
+      <xs:documentation>A Community Rating System (CRS) Classification Credit Percentage used to rate the policy. The insurance premium credit is based on whether a property is in or out of the Special Flood Hazard Area (SFHA) as shown on the community's Flood Insurance Rate Map. The premium credit for properties in the SFHA increases according to a community's CRS class. *For the purpose of determining CRS Premium Discounts, all AR and A99 zones are treated as non-SFHAs. **These percentages are subject to change. Always refer to the Flood Insurance Manual for the latest information.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="ElevationCertificateIndicator" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingElevationCertificateCode" type="fema:BuildingElevationCertificateCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element to indicates if a policy has been rated with elevation certificate 
-1 - No Elevation Certificate, original effective date prior to October 1, 1982, with no break in insurance coverage or change in insurable interest. Policies will be rated using 'No Base Flood Elevation' +2 to +4 feet rates; 
-2 - No Elevation Certificate, original effective date on or after October 1, 1982, with no break in insurance coverage or change in insurable interest. Policies will be rated using 'No Elevation Certificate' rates; 
-3 - Elevation Certificate with BFE. Policies will be rated using 'With Base Flood Elevation' rates; 
-4 - Elevation Certificate without BFE. Policies will be rated using 'No Base Flood Elevation' rates;</xs:documentation>
+      <xs:documentation>An element to indicates if a policy has been rated with elevation certificate</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="ElevationDifference" type="niem-xs:integer" nillable="true">
+  <xs:element name="BuildingElevationDifferenceValue" type="niem-xs:integer" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for difference in feet between the elevation of the lowest floor used for rating or the floodproofed elevation and the base flood elevation (BFE), or base flood depth, as appropriate from the elevation certificate</xs:documentation>
+      <xs:documentation>A difference in feet between the elevation of the lowest floor used for rating or the floodproofed elevation and the base flood elevation (BFE), or base flood depth, as appropriate from the elevation certificate</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="LocationOfContents" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingContentsLocationCode" type="fema:BuildingContentsLocationCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for code that indicates where within the structure the contents are located. 1 - Basement/Enclosure/Crawlspace/Subgrade Crawlspace only; 2 - Basement/Enclosure/Crawlspace/Subgrade Crawlspace and above; 3 - Lowest floor only above ground level (No basement/enclosure/crawlspace/subgrade crawlspace); 4 - Lowest floor above ground level and higher floors (No basement/enclosure/crawlspace/subgrade crawlspace); 5 - Above ground level more than one full floor; 6 - Manufactured (mobile) home or travel trailer on foundation;</xs:documentation>
+      <xs:documentation>An element for code that indicates where within the structure the contents are located.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="LowestAdjacentGrade" type="niem-xs:integer" nillable="true">
+  <xs:element name="BuildingLowestAdjacentGradeValue" type="niem-xs:integer" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Lowest natural grade adjacent to the insured structure prior to excavating or filling. The difference in feet of the lowest natural grade adjacent to the building from the reference level of the building</xs:documentation>
+      <xs:documentation>A lowest natural grade adjacent to the insured structure prior to excavating or filling. The difference in feet of the lowest natural grade adjacent to the building from the reference level of the building</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="LowestFloorElevation" type="niem-xs:integer" nillable="true">
+  <xs:element name="BuildingLowestFloorElevationValue" type="niem-xs:integer" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for A building's lowest floor is the floor or level (including basement/enclosure/crawlspace/subgrade crawlspace) that is used as the point of reference when rating a building. This includes the level to which a building is floodproofed*. The elevation in feet of the reference level of the building from the elevation certificate</xs:documentation>
+      <xs:documentation>A building's lowest floor is the floor or level (including basement/enclosure/crawlspace/subgrade crawlspace) that is used as the point of reference when rating a building. This includes the level to which a building is floodproofed*. The elevation in feet of the reference level of the building from the elevation certificate</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="NumberOfFloorsInTheInsuredBuilding" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingFloorQuantityCode" type="fema:BuildingFloorQuantityCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Code that indicates the number of floors in the insured building. 1 = One floor; 2= Two floors; 3 = Three or more floors; 4 = Split-level; 5 = Manufactured (mobile) home or travel trailer on foundation; 6 = Townhouse/Rowhouse with three or more floors (RCBAP Low-rise only);</xs:documentation>
+      <xs:documentation>A number of floors in the building.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="ObstructionTypeNumber" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingObstructionCategoryCode" type="fema:BuildingObstructionCategoryCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Code that gives the type of obstruction (if any) in the enclosure (if any). 
-        With obstruction: enclosure/crawlspace with proper openings not used for rating (not applicable in V zones) - 15;
-        With obstruction: less than 300 sq. ft. with breakaway walls, but no machinery or equipment attached to building below lowest elevated floor, or elevation of machinery/equipment is at or above Base Flood Elevation - 20; 
-        With obstruction: less than 300 sq. ft. 
-        With breakaway walls or finished enclosure and with machinery or equipment attached to building below lowest elevated floor, and elevation of machinery/equipment is below Base Flood Elevation - 24; 
-        With obstruction: 300 sq. ft. or more with breakaway walls, but no machinery or equipment attached to building below the Base Flood Elevation - 30; 
-        With obstruction: 300 sq. ft. or more with breakaway walls or finished enclosure and with machinery or equipment attached to building below the Base Flood Elevation - 34; 
-        With obstruction: no walls, but the elevation of machinery or equipment attached to building is below Base Flood Elevation (NOTE: Use Obstruction Type '10' and Without Obstruction Rate Table if the elevation of machinery/equipment is at or above Base Flood Elevation.) - 40
-        With obstruction: nonbreakaway walls/crawlspace or finished enclosure with no machinery or equipment attached to building below lowest elevated floor - 50
-        With obstruction: nonbreakaway walls/crawlspace or finished enclosure with machinery or equipment attached to building below lowest elevated floor - 54; With obstruction - 60; 
-        With Certification subgrade crawlspace (AE, A01-A30, unnumbered A, AO, AH, AOB, AHB zones) - 70; 
-        Without Certification subgrade crawlspace (all zones) - 80; 
-        With Enclosure: Elevated buildings with elevator below the BFE in A zones. No other enclosure below the BFE. - 90; 
-        With Obstruction: Elevated buildings with elevator below the BFE in V zones. No other obstruction or machinery and equipment (ME) servicing the building located below the BFE. - 94; 
-        With Obstruction: Elevated buildings with elevator below the BFE in V zones. Breakaway wall obstruction is unfinished and elevator and obstruction are located below the BFE, but no machinery and equipment servicing the building is located below the BFE. - 95; 
-        With Obstruction: Elevated buildings with elevator below the BFE in V zones. Breakaway wall obstruction is finished or is used for other than parking, building access, or storage. - 96; 
-        With Obstruction: Elevated buildings with elevator below the BFE in V zones. No other obstruction, but has ME servicing the building located below the BFE. - 97;
-        With Obstruction: Elevated buildings with elevator below the BFE in V zones. Breakaway walls obstruction and ME servicing the building are located below the BFE. - 98
-      </xs:documentation>
+      <xs:documentation>A kind of obstruction (if any) in the enclosure (if any).</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="OccupancyTypeNumber" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingOccupancyCategoryCode" type="fema:BuildingOccupancyCategoryCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Code indicating the use and occupancy type of the insured structure. One-digit code: 1=single family residence; 2 = 2 to 4 unit residential building; 3 = residential building with more than 4 units; 4 = Non-residential building;</xs:documentation>
+      <xs:documentation>A kind of use and occupancy type of the structure.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="AmountPaidOnBuildingClaim" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingClaimPaidAmount" type="nc:AmountType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Dollar amount paid on the building claim. In some instances, a negative amount may appear which occurs when a check issued to a policy holder isn't cashed and has to be re-issued</xs:documentation>
+      <xs:documentation>A dollar amount paid on the building claim. In some instances, a negative amount may appear which occurs when a check issued to a policy holder isn't cashed and has to be re-issued</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="AmountPaidOnContentsClaim" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingClaimContentsPaidAmount" type="nc:AmountType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Dollar amount paid on the contents claim. In some instances, a negative amount may appear, which occurs when a check issued to a policy holder isn't cashed and has to be re-issued</xs:documentation>
+      <xs:documentation>A dollar amount paid on the contents claim. In some instances, a negative amount may appear, which occurs when a check issued to a policy holder isn't cashed and has to be re-issued</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="AmountPaidOnIncreasedCostOfComplianceClaim" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingClaimIncreasedCostOfCompliancePaidAmount" type="nc:AmountType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Dollar amount paid on the Increased Cost of Compliance (ICC) claim. Increased Cost of Compliance (ICC) coverage is one of several flood insurances resources for policyholders who need additional help rebuilding after a flood. It provides up to $30,000 to help cover the cost of mitigation measures that will reduce the flood risk</xs:documentation>
+      <xs:documentation>A dollar amount paid on the Increased Cost of Compliance (ICC) claim. Increased Cost of Compliance (ICC) coverage is one of several flood insurances resources for policyholders who need additional help rebuilding after a flood. It provides up to $30,000 to help cover the cost of mitigation measures that will reduce the flood risk</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="TotalBuildingInsuranceCoverage" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingTotalInsuranceCoverageAmount" type="nc:AmountType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Total Insurance Amount in dollars on the Building</xs:documentation>
+      <xs:documentation>A dollar amount for Total Insurance Amount on the Building</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="TotalContentsInsuranceCoverage" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingTotalContentsInsuranceCoverageAmount" type="nc:AmountType" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Total Insurance Amount in dollars on the Contents</xs:documentation>
+      <xs:documentation>A dollar amount for Total Insurance Amount on the Contents</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="YearofLoss" type="niem-xs:positiveInteger" nillable="true">
+  <xs:element name="BuildingLossYearDate" type="niem-xs:gYear" nillable="true">
     <xs:annotation>
-      <xs:documentation>An element for Year of Loss = Year in which the flood loss occurred</xs:documentation>
+      <xs:documentation>A date for Year of Loss = Year in which the flood loss occurred</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="CondominiumIndicatorText" type="niem-xs:string" nillable="true">
+  <xs:element name="BuildingCondominiumCategoryCode" type="fema:BuildingCondominiumCategoryCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for an indicator of what type of condominium property is being insured. 
-Condominium Code - 1 character; 
-Not a condominium (N); 
-An individual condominium unit owned by a unit owner, or by a condominium association (U); 
-The entire condominium building owned by the association insuring building common elements as well as building elements (additions and alterations) within all units in the building, not eligible under Condominium Master Policy (A); 
-The entire residential condominium building owned by the association eligible under Condominium Master Policy, insuring the entire condominium building common elements as well as building elements (additions and alterations) within all units in the building, (H) for High-Rise or (L) for Low-Rise; 
-Townhouses (T);
-      </xs:documentation>
+      <xs:documentation>A kind of condominium property.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="FloodZone" type="niem-xs:string" nillable="true">
+  <xs:element name="BuildingFloodZoneCode" type="fema:BuildingFloodZoneCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for Flood zone derived from the Flood Insurance Rate Map (FIRM) used to rate the insured property. 
-A - Special Flood with no Base Flood Elevation on FIRM; AE, A1-A30 - Special Flood with Base Flood Elevation on FIRM; 
-A99 - Special Flood with Protection Zone; AH, AHB* - Special Flood with Shallow Ponding; 
-AO, AOB* - Special Flood with Sheet Flow; X, 
-B - Moderate Flood from primary water source. Pockets of areas subject to drainage problems; 
-X, C - Minimal Flood from primary water source. Pockets of areas subject to drainage problems; 
-D - Possible Flood; 
-V - Velocity Flood with no Base Flood Elevation on FIRM; 
-VE, V1-V30 - Velocity Flood with Base Flood Elevation on FIRM; 
-AE, VE, X - New zone designations used on new maps starting January 1, 1986, in lieu of A1-A30, V1-V30, and B and C; 
-AR - A Special Flood Hazard Area that results from the decertification of a previously accredited flood protection system that is determined to be in the process of being restored to provide base flood protection; 
-AR Dual Zones - (AR/AE, AR/A1-A30, AR/AH, AR/AO, AR/A) Areas subject to flooding from failure of the flood protection system (Zone AR) which also overlap an existing Special Flood Hazard Area as a dual zone;
- *AHB, AOB, ARE, ARH, ARO, and ARA are not risk zones shown on a map, but are acceptable values for rating purposes
-      </xs:documentation>
+      <xs:documentation>A Flood zone derived from the Flood Insurance Rate Map (FIRM) used to rate the property.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="RateMethod" type="niem-xs:string" nillable="true">
+  <xs:element name="BuildingPolicyRateMethodCode" type="fema:BuildingPolicyRateMethodCodeType" nillable="true">
     <xs:annotation>
-      <xs:documentation>A data element for Indicates policy rating method: 
-1 - Manual; 
-2 - Specific; 
-3 - Alternative; 
-4 - V-Zone Risk Factor Rating Form; 
-5 - Underinsured Condominium Master Policy; 
-6 - Provisional; 
-7 - Preferred Risk Policy (PRPs issued for eligible properties located within a non-Special Flood Hazard Area [non-SFHA]); 
-8 - Tentative; 
-9 - MPPP Policy; 
-A - Optional Post-1981 V Zone; 
-B - Pre-FIRM policies with elevation rating - Flood Insurance Manual rate tables; 
-E - FEMA Pre-FIRM Special Rates; 
-F - Leased Federal Property; 
-G - Group Flood Insurance Policy (GFIP); 
-P - Preferred Risk Policy (A PRP renewal issued in the first year following a map revision for an eligible property that was newly mapped into the SFHA by the map revision, or new business written for an eligible property that was newly mapped into the SFHA by a map revision effective on or after October 1, 2008 - PRP Eligibility Extension); 
-Q - Preferred Risk Policy (subsequent PRP renewals where the previous policy year was reported as a 'P' or 'Q'); 
-S - FEMA Special Rates; 
-T - Severe Repetitive Loss Properties (formerly Target Group Full Risk). Effective October 1, 2013, code will no longer be valid; 
-W - Pre-FIRM policies with elevation rating - Submit-for-Rate procedures;
-      </xs:documentation>
+      <xs:documentation>A kind of policy rating method.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="DamageClaimDetail" type="em:DamageClaimDetailType" substitutionGroup="em:EMMessageDetailAbstract" nillable="true">
@@ -15360,46 +15283,46 @@ W - Pre-FIRM policies with elevation rating - Submit-for-Rate procedures;
     <xs:complexContent>
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
-          <xs:element ref="em:AgricultureStructureIndicator" minOccurs="0"/>
-          <xs:element ref="em:PrimaryResidenceIndicator" minOccurs="0"/>
-          <xs:element ref="em:ElevatedBuildingIndicator" minOccurs="0"/>
-          <xs:element ref="em:HouseWorshipIndicator" minOccurs="0"/>
-          <xs:element ref="em:NonProfitIndicator" minOccurs="0"/>
-          <xs:element ref="em:PostFIRMConstructionIndicator" minOccurs="0"/>
-          <xs:element ref="em:SmallBusinessIndicatorBuildingIndicator" minOccurs="0"/>
-          <xs:element ref="em:DateOfLossDateTime" minOccurs="0"/>
-          <xs:element ref="em:OriginalConstructionDateTime" minOccurs="0"/>
-          <xs:element ref="em:OriginalNBDateTime" minOccurs="0"/>
-          <xs:element ref="em:BaseFloodElevation" minOccurs="0"/>
-          <xs:element ref="em:BasementEnclosureCrawlspaceTypeOption" minOccurs="0"/>
-          <xs:element ref="em:PolicyCount" minOccurs="0"/>
-          <xs:element ref="em:CommunityRatingSystemDiscount" minOccurs="0"/>
-          <xs:element ref="em:ElevationCertificateIndicator" minOccurs="0"/>
-          <xs:element ref="em:ElevationDifference" minOccurs="0"/>
-          <xs:element ref="em:LocationOfContents" minOccurs="0"/>
-          <xs:element ref="em:LowestAdjacentGrade" minOccurs="0"/>
-          <xs:element ref="em:LowestFloorElevation" minOccurs="0"/>
-          <xs:element ref="em:NumberOfFloorsInTheInsuredBuilding" minOccurs="0"/>
-          <xs:element ref="em:ObstructionTypeNumber" minOccurs="0"/>
-          <xs:element ref="em:OccupancyTypeNumber" minOccurs="0"/>
-          <xs:element ref="em:AmountPaidOnBuildingClaim" minOccurs="0"/>
-          <xs:element ref="em:AmountPaidOnContentsClaim" minOccurs="0"/>
-          <xs:element ref="em:AmountPaidOnIncreasedCostOfComplianceClaim" minOccurs="0"/>
-          <xs:element ref="em:TotalBuildingInsuranceCoverage" minOccurs="0"/>
-          <xs:element ref="em:TotalContentsInsuranceCoverage" minOccurs="0"/>
-          <xs:element ref="em:YearofLoss" minOccurs="0"/>
-          <xs:element ref="em:CondominiumIndicatorText" minOccurs="0"/>
-          <xs:element ref="em:FloodZone" minOccurs="0"/>
-          <xs:element ref="em:RateMethod" minOccurs="0"/>
+          <xs:element ref="em:BuildingAgricultureStructureIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingPrimaryResidenceIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingElevatedBuildingIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingHouseWorshipIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingNonProfitIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingPostFIRMConstructionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingSmallBusinessIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingDateOfLossDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingOriginalConstructionDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingOriginalFloodPolicyDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingBaseFloodElevation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingBasementStructureCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingPolicyCountQuantity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingCommunityRatingSystemDiscountCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingElevationCertificateCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingElevationDifferenceValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingContentsLocationCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingLowestAdjacentGradeValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingLowestFloorElevationValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingFloorQuantityCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingObstructionCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingOccupancyCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingClaimPaidAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingClaimContentsPaidAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingClaimIncreasedCostOfCompliancePaidAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingTotalInsuranceCoverageAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingTotalContentsInsuranceCoverageAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingLossYearDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingCondominiumCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingFloodZoneCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="em:BuildingPolicyRateMethodCode" minOccurs="0" maxOccurs="unbounded"/>
           
-          <xs:element ref="nc:EffectiveDate" minOccurs="0"/>
-          <xs:element ref="nc:AddressCityName" minOccurs="0"/>
-          <xs:element ref="nc:StateCode" minOccurs="0"/>
-          <xs:element ref="fips:CountyCode" minOccurs="0"/>
-          <xs:element ref="nc:AddressPostalCode" minOccurs="0"/>
-          <xs:element ref="nc:GeographicCoordinateLatitude" minOccurs="0"/>
-          <xs:element ref="nc:GeographicCoordinateLongitude" minOccurs="0"/>
-          <xs:element ref="nc:LocaleCensusTractID" minOccurs="0"/>
+          <xs:element ref="nc:EffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:AddressCityName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:StateCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="fips:CountyCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:AddressPostalCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:GeographicCoordinateLatitude" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:GeographicCoordinateLongitude" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:LocaleCensusTractID" minOccurs="0" maxOccurs="unbounded"/>
                 
           <xs:element ref="em:DamageClaimDetailAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
